@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Section 16- Security &amp; Compliance - Hello, I am Minh</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hello, I am Minh"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hello, I am Minh"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Tìm hiểu 1 số phần liên quan đến việc tuân thủ và bảo mật trên AWS!"><meta property="og:type" content="blog"><meta property="og:title" content="Section 16- Security &amp; Compliance"><meta property="og:url" content="http://yoursite.com/2021/05/22/Section-16-Security-Compliance/"><meta property="og:site_name" content="Hello, I am Minh"><meta property="og:description" content="Tìm hiểu 1 số phần liên quan đến việc tuân thủ và bảo mật trên AWS!"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://yoursite.com/img/aws/section16/ddos.png"><meta property="og:image" content="http://yoursite.com/img/aws/section16/ddos_protection.png"><meta property="og:image" content="http://yoursite.com/img/aws/section16/cloud_hsm.png"><meta property="og:image" content="http://yoursite.com/img/aws/section16/AWS_security_hub.png"><meta property="article:published_time" content="2021-05-22T15:59:30.000Z"><meta property="article:modified_time" content="2021-05-31T14:15:37.490Z"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/aws/section16/ddos.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2021/05/22/Section-16-Security-Compliance/"},"headline":"Section 16- Security & Compliance","image":["http://yoursite.com/img/aws/section16/ddos.png","http://yoursite.com/img/aws/section16/ddos_protection.png","http://yoursite.com/img/aws/section16/cloud_hsm.png","http://yoursite.com/img/aws/section16/AWS_security_hub.png"],"datePublished":"2021-05-22T15:59:30.000Z","dateModified":"2021-05-31T14:15:37.490Z","author":{"@type":"Person","name":"John Doe"},"description":"Tìm hiểu 1 số phần liên quan đến việc tuân thủ và bảo mật trên AWS!"}</script><link rel="canonical" href="http://yoursite.com/2021/05/22/Section-16-Security-Compliance/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="https://cdn2.f-cdn.com/contestentries/1423711/31029843/5baf0998cc763_thumb900.jpg" alt="Hello, I am Minh" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-05-22T15:59:30.000Z" title="5/22/2021, 10:59:30 PM">2021-05-22</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-05-31T14:15:37.490Z" title="5/31/2021, 9:15:37 PM">2021-05-31</time></span><span class="level-item">29 minutes read (About 4385 words)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">Section 16- Security &amp; Compliance</h1><div class="content"><p>Tìm hiểu 1 số phần liên quan đến việc tuân thủ và bảo mật trên AWS!</p>
+<a id="more"></a>
+<h1 id="AWS-Shared-Responsibility-Model"><a href="#AWS-Shared-Responsibility-Model" class="headerlink" title="AWS Shared Responsibility Model"></a>AWS Shared Responsibility Model</h1><p>Phần này sẽ có 2-3 câu hỏi trong đề thi, và việc hiểu được trách nhiệm giữa bạn và AWS là điều rất quan trọng</p>
+<ul>
+<li>AWS responsibility - Security of the Cloud<ul>
+<li>Bảo vệ cơ sở hạ tầng (phần cứng, phần mềm, cơ sở vật chất và mạng) chạy tất cả các dịch vụ AWS</li>
+<li>Quản lý các dịch vụ như S3, Dynamo DB, RDS, etc.</li>
+</ul>
+</li>
+<li>Customer responsibility - Security in the Cloud<ul>
+<li>Đối với EC2 instance, customer có trách nhiệm quản lý OS khách (bao gồm các bản cập nhật bảo mật và bản vá), firewall và cấu hình mạng, IAM</li>
+<li>Mã hoá dữ liệu ứng dụng</li>
+</ul>
+</li>
+<li>Shared controls:<ul>
+<li>Patch Management, Configuration Management, Awareness &amp; Training</li>
+</ul>
+</li>
+</ul>
+<h2 id="Vi-du-voi-RDS"><a href="#Vi-du-voi-RDS" class="headerlink" title="Ví dụ với RDS"></a>Ví dụ với RDS</h2><ul>
+<li>Trách nhiệm của AWS<ul>
+<li>Quản lý phiên bản EC2 cơ bản, vô hiệu hoá truy cập SSH</li>
+<li>Bản vá DB tự động</li>
+<li>Bản vá OS tự động</li>
+<li>Kiểm tra disks và instance cơ bản và đảm bảo các chức năng của nó hoạt động</li>
+</ul>
+</li>
+<li>Trách nhiệm của bạn<ul>
+<li>Kiểm tra ports / IP / security group của các inbound rules trong DB của SG</li>
+<li>Phân quyền và tạo user trong database</li>
+<li>Tạo database cần hoặc không cần quyền truy cập public</li>
+<li>Chắc chắn rằng parameter groups hoặc DB được cấu hình chỉ cho phép truy cập SSL</li>
+<li>Cài đặt mã hoá database</li>
+</ul>
+</li>
+</ul>
+<h2 id="Vi-du-voi-S3"><a href="#Vi-du-voi-S3" class="headerlink" title="Ví dụ với S3"></a>Ví dụ với S3</h2><ul>
+<li>Trách nhiệm AWS<ul>
+<li>Đảm bảo bộ nhớ không giới hạn</li>
+<li>Đảm bảo mã hoá</li>
+<li>Đảm bảo phân tách dữ liệu giữa các customer khác nhau</li>
+<li>Đảm bảo rằng nhân viên của AWS không thể truy cập dữ liệu của bạn</li>
+</ul>
+</li>
+<li>Trách nhiệm của bạn<ul>
+<li>Cấu hình các bucket</li>
+<li>Cài đặt Bucket policy / public</li>
+<li>IAM user và roles</li>
+<li>Bật mã hoá</li>
+</ul>
+</li>
+</ul>
+<h2 id="Shared-Responsibility-Model-diagram"><a href="#Shared-Responsibility-Model-diagram" class="headerlink" title="Shared Responsibility Model diagram"></a>Shared Responsibility Model diagram</h2><p>Ref: <a target="_blank" rel="noopener" href="https://aws.amazon.com/compliance/shared-responsibility-model/">https://aws.amazon.com/compliance/shared-responsibility-model/</a></p>
+<h1 id="DDoS-Protection-WAF-amp-Shield"><a href="#DDoS-Protection-WAF-amp-Shield" class="headerlink" title="DDoS Protection: WAF &amp; Shield"></a>DDoS Protection: WAF &amp; Shield</h1><img src="/img/aws/section16/ddos.png" class="[]">
+<h2 id="DDOS-Protection-on-AWS"><a href="#DDOS-Protection-on-AWS" class="headerlink" title="DDOS Protection on AWS"></a>DDOS Protection on AWS</h2><ul>
+<li><strong>AWS Shield Standard</strong>:  giúp bạn chống lại tấn công DDOS mà không phát sinh giá</li>
+<li><strong>AWS Shield Advanced</strong>: Bảo vệ 24/7 DDoS cao hơn</li>
+<li><strong>AWS WAF</strong>: Lọc các request nhất định dựa vào các rules</li>
+<li><p><strong>CloudFront and Route 53</strong></p>
+<ul>
+<li>Bảo vệ tính khả dụng bằng cách sử dụng các global edge network (mạng biên toàn cầu)</li>
+<li>Kết hợp với AWS Shield, cung cấp khả năng giảm thiểu tấn công ở  (rìa)</li>
+</ul>
+</li>
+<li><p>Sẵn sàng scale - tận dụng <strong>AWS Auto Scaling</strong></p>
+</li>
+</ul>
+<h3 id="AWS-Shield"><a href="#AWS-Shield" class="headerlink" title="AWS Shield"></a>AWS Shield</h3><ul>
+<li><strong>AWS Shield Standard</strong><ul>
+<li>Dịch vụ miễn phí được kích hoạt cho mọi khách hàng AWS</li>
+<li>Cung cấp khả năng bảo vệ khỏi các cuộc tấn công như SYN / UDP Floods, các cuộc tấn công Reflection và các cuộc tấn công layer 3 / layer 4 khác</li>
+</ul>
+</li>
+<li><strong>AWS Shield Advanced</strong><ul>
+<li>Dịch vụ giảm thiểu DDoS tùy chọn ($ 3.000 mỗi tháng cho mỗi tổ chức)</li>
+<li>Bảo vệ khỏi các cuộc tấn công phức tạp hơn trên Amazon EC2, Elastic Load Balancing (ELB), Amazon CloudFront, AWS Global Accelerator, and Route 53</li>
+<li>24/7 truy cập, liên hệ với các team phản hồi DDoS (DDoS response team - DRP)</li>
+<li>Bảo vệ khỏi mức phí cao hơn trong thời gian sử dụng tăng đột biến do DDoS</li>
+</ul>
+</li>
+</ul>
+<h3 id="AWS-WAF-–-Web-Application-Firewall"><a href="#AWS-WAF-–-Web-Application-Firewall" class="headerlink" title="AWS WAF – Web Application Firewall"></a>AWS WAF – Web Application Firewall</h3><ul>
+<li>Bảo vệ các ứng dụng web của bạn khỏi các hình thức khai thác web phổ biến (Layer 7)</li>
+<li><strong>Layer 7 is HTTP</strong> (vs Layer 4 is TCP)</li>
+<li>Deploy trên <strong>Application Load Balancer, API Gateway, CloudFront</strong></li>
+<li>Định nghĩa các Web ACL (Web Access Control List):<ul>
+<li>Các Rule có thể chứa <strong>Ip Address</strong>, HTTP body, or URI strings</li>
+<li>Bảo vệ khỏi các tấn công phổ biến như SQL Injection và Cross-Site Scripting (XSS)</li>
+<li>Size constraints, <strong>geo-match (block countries)</strong></li>
+<li><strong>Các quy tắc dựa trên tỷ lệ</strong> (để đếm số lần xuất hiện của các sự kiện) - để bảo vệ DDoS</li>
+</ul>
+</li>
+</ul>
+<h2 id="Kien-truc-vi-du-chong-DDoS"><a href="#Kien-truc-vi-du-chong-DDoS" class="headerlink" title="Kiến trúc ví dụ chống DDoS"></a>Kiến trúc ví dụ chống DDoS</h2><p>Ref: <a target="_blank" rel="noopener" href="https://d1.awsstatic.com/whitepapers/Security/DDoS_White_Paper.pdf">https://d1.awsstatic.com/whitepapers/Security/DDoS_White_Paper.pdf</a></p>
+<img src="/img/aws/section16/ddos_protection.png" class="[]">
+<h1 id="Penetration-Testing"><a href="#Penetration-Testing" class="headerlink" title="Penetration Testing"></a>Penetration Testing</h1><blockquote>
+<p>So, penetration testing is when you’re trying to attack your own infrastructure to test your security.</p>
+</blockquote>
+<p>Khách hàng AWS được hoan nghênh thực hiện đánh giá bảo mật hoặc kiểm tra thâm nhập đối với cơ sở hạ tầng AWS của họ mà không cần phê duyệt trước đối với 8 dịch vụ:</p>
+<ul>
+<li>Amazon EC2 instances, NAT Gateways, and Elastic Load Balancers </li>
+<li>Amazon RDS</li>
+<li>Amazon CloudFront</li>
+<li>Amazon Aurora</li>
+<li>Amazon API Gateways</li>
+<li>AWS Lambda and Lambda Edge functions </li>
+<li>Amazon Lightsail resources</li>
+<li>Amazon Elastic Beanstalk environments</li>
+</ul>
+<p>(Danh sách này có thể tăng theo thời gian)</p>
+<h2 id="Penetration-Testing-on-your-AWS-Cloud"><a href="#Penetration-Testing-on-your-AWS-Cloud" class="headerlink" title="Penetration Testing on your AWS Cloud"></a>Penetration Testing on your AWS Cloud</h2><ul>
+<li><strong>Các hoạt động bị cấm</strong><ul>
+<li>DNS zone walking via Amazon Route 53 Hosted Zones</li>
+<li>Denial of Service (DoS), Distributed Denial of Service (DDoS), Simulated DoS, Simulated DDoS</li>
+<li>Port flooding</li>
+<li>Protocol flooding</li>
+<li>Request flooding (login request flooding, API request flooding)</li>
+</ul>
+</li>
+<li>Nếu có bất cứ vấn đề gì liên quan, liên hệ với <a href="mailto:aws-security-simulated-event@amazon.com">aws-security-simulated-event@amazon.com</a></li>
+<li>Read more: <a target="_blank" rel="noopener" href="https://aws.amazon.com/security/penetration-testing/">https://aws.amazon.com/security/penetration-testing/</a></li>
+</ul>
+<h2 id="Data-at-rest-vs-Data-in-transit"><a href="#Data-at-rest-vs-Data-in-transit" class="headerlink" title="Data at rest vs. Data in transit"></a>Data at rest vs. Data in transit</h2><ul>
+<li>Trạng thái nghỉ: dữ liệu đã được lưu trữ hoặc đang lưu trữ trên 1 thiết bị. Ví dụ như lưu trên ổ cứng, lưu RDS hoặc trong S3</li>
+<li>Đang chuyển tiếp (đang chuyển động): dữ liệu được di chuyển từ vị trí này sang vị trí khác, như chuyển dữ liệu từ các server tại chỗ sang AWS, từ EC2 sang Dynamo DB,..</li>
+<li>Chúng ta muốn mã hoá dữ liệu ở cả 2 trạng thái để bảo vệ chúng. Để làm điều này, chúng ta tận dụng các khoá mã hoá (<strong>encrytion keys</strong>)</li>
+</ul>
+<h1 id="Encryption-with-KMS-amp-CloudHSM"><a href="#Encryption-with-KMS-amp-CloudHSM" class="headerlink" title="Encryption with KMS &amp; CloudHSM"></a>Encryption with KMS &amp; CloudHSM</h1><h2 id="AWS-KMS-Key-Management-Service"><a href="#AWS-KMS-Key-Management-Service" class="headerlink" title="AWS KMS (Key Management Service)"></a>AWS KMS (Key Management Service)</h2><p>Bất cứ khi nào bạn nghe thấy “mã hóa” cho một dịch vụ AWS, rất có thể đó là KMS</p>
+<p>KMS = <strong>AWS manages the encryption keys for us</strong></p>
+<p>Mã hoá sẽ được sử dụng</p>
+<ul>
+<li>EBS volumes: encrypt volumes</li>
+<li>S3 buckets: Server-side encryption of objects </li>
+<li>Redshift database: encryption of data</li>
+<li>RDS database: encryption of data</li>
+<li>EFS drives: encryption of data</li>
+</ul>
+<p>Các mã hoá sẽ được kích hoạt tự động</p>
+<ul>
+<li>CloudTrail Logs</li>
+<li>S3 Glacier</li>
+<li>Storage Gateway</li>
+</ul>
+<h2 id="CloudHSM"><a href="#CloudHSM" class="headerlink" title="CloudHSM"></a>CloudHSM</h2><ul>
+<li>Với KMS AWS quản lý phần mềm mã hoá thì CloudHSM AWS sẽ cung cấp phần cứng mã hoá</li>
+<li>Các phần cứng này là chuyên dụng (HSM = Hardware Security Module)</li>
+<li>Bạn tự quản lý các key mã hoá của mình chứ không phải AWS</li>
+<li>Thiết bị HSM có khả năng chống giả mạo, tuân thủ FIPS 140-2 Level 3</li>
+</ul>
+<h3 id="CloudHSM-Diagram"><a href="#CloudHSM-Diagram" class="headerlink" title="CloudHSM Diagram"></a>CloudHSM Diagram</h3><img src="/img/aws/section16/cloud_hsm.png" class="[]">
+<h2 id="Types-of-Customer-Master-Keys-CMK"><a href="#Types-of-Customer-Master-Keys-CMK" class="headerlink" title="Types of Customer Master Keys: CMK"></a>Types of Customer Master Keys: CMK</h2><ul>
+<li><strong>Customer Managed CMK</strong>:<ul>
+<li>Tạo, quản lý và sử dụng bởi khách hàng, có thể bật hoặc tắt</li>
+<li>Áp dụng chính sách luân chuyển (khóa mới được tạo hàng năm, khóa cũ được giữ nguyên)</li>
+<li>Có thể bring-your-own-key</li>
+</ul>
+</li>
+<li><strong>AWS managed CMK</strong>:<ul>
+<li>Được AWS tạo, quản lý và sử dụng thay mặt khách hàng</li>
+<li>Được sử dụng bởi AWS services (aws/s3, aws/ebs, aws/redshift)</li>
+</ul>
+</li>
+<li><strong>• AWS owned CMK</strong>:<ul>
+<li>Tập hợp các CMK mà một dịch vụ AWS sở hữu và quản lý để sử dụng trong nhiều tài khoản</li>
+<li>AWS có thể sử dụng những thứ đó để bảo vệ tài nguyên trong tài khoản của bạn (nhưng bạn không thể xem các khóa)</li>
+</ul>
+</li>
+<li><strong>CloudHSM Keys (custom keystore)</strong>:<ul>
+<li>Các khóa được tạo từ thiết bị phần cứng CloudHSM của riêng bạn</li>
+<li>Các toán tử mã hoá được thực hiện trong CloudHSM cluster</li>
+</ul>
+</li>
+</ul>
+<h2 id="Lab-02-Encryption-with-KMS-amp-CloudHSM-Hands-On"><a href="#Lab-02-Encryption-with-KMS-amp-CloudHSM-Hands-On" class="headerlink" title="Lab 02: Encryption with KMS &amp; CloudHSM Hands On"></a>Lab 02: Encryption with KMS &amp; CloudHSM Hands On</h2><ul>
+<li>Bước 1: Vào dịch vụ Key Management Service (KMS)<br>As we can see, we have three types of keys.<br>We have the customer managed keys, which you can create<br>but they will cost you some money<br>or you have the AWS manage keys<br>and they’re created for the services of AWS<br>and the custom key store<br>which is going to use a CloudHSM cluster<br>that you need to create, own and manage.</li>
+<li>Tab AWS managament:</li>
+</ul>
+<ul>
+<li>Vào volume trong EC2, tạo Volumn, Chọn mã hoá =&gt; Master Key</li>
+<li>CloudTrail: Log file với các thể loại SSE-KMS luôn (File S3)</li>
+</ul>
+<ul>
+<li>Customer managed keys: Tạo key</li>
+</ul>
+<ul>
+<li>Vào volumn EC2 tạo lại Volumn với mã hoá =&gt; Chọn được key của bạn</li>
+</ul>
+<h1 id="Secrets-Manager-Overview"><a href="#Secrets-Manager-Overview" class="headerlink" title="Secrets Manager Overview"></a>Secrets Manager Overview</h1><p>So Secrets Manager is a great way to store secrets,<br>but on top of it, you can force the rotation<br>of these secrets, I mean, they have to change<br>every X number of days.<br>For example, you can say, “Okay, every 90 days,<br>I want to change my passwords.”</p>
+<ul>
+<li>Vào dịch vụ Secret Manager. =&gt; Store a new secret (Có giá nhé, nhìn ở mục Price)</li>
+</ul>
+<ul>
+<li>Tạo key và chọn các tự động rotation</li>
+<li>Xem cả sample code luôn, có vẻ xịn =))</li>
+</ul>
+<h1 id="Artifact-Overview-not-really-a-service"><a href="#Artifact-Overview-not-really-a-service" class="headerlink" title="Artifact Overview (not really a service)"></a>Artifact Overview (not really a service)</h1><ul>
+<li><p>Cổng cung cấp cho khách hàng quyền truy cập theo yêu cầu vào tài liệu tuân thủ AWS và các thỏa thuận AWS</p>
+<blockquote>
+<p>Report + Agreements</p>
+</blockquote>
+</li>
+<li><p>Vào service Artifact =&gt; Global service</p>
+<ul>
+<li>Download report</li>
+<li>Accept 1 agreements</li>
+</ul>
+</li>
+</ul>
+<p>=&gt; Có vẻ chỉ là docs hơn là 1 dịch vụ</p>
+<ul>
+<li>Artifact Reports: Cho phép bạn tải xuống các tài liệu tuân thủ và bảo mật AWS từ các đánh giá của bên thứ ba, chẳng hạn như chứng nhận AWS ISO, Payment Card Industry (PCI), and System and Organization Control (SOC) reports</li>
+<li>Artifact Agreements: Cho phép bạn xem xét, chấp nhận và theo dõi trạng thái của các thỏa thuận AWS, chẳng hạn như Business Associate Addendum (BAA) or the Health Insurance Portability and Accountability Act (HIPAA) cho tài khoản cá nhân hoặc trong tổ chức của bạn</li>
+<li><strong>Có thể được sử dụng để hỗ trợ kiểm toán nội bộ hoặc tuân thủ</strong></li>
+</ul>
+<h1 id="Amazon-GuardDuty"><a href="#Amazon-GuardDuty" class="headerlink" title="Amazon GuardDuty"></a>Amazon GuardDuty</h1><p>Dành cho Machine Learming (méo hiểu)</p>
+<h1 id="Inspector-Overview"><a href="#Inspector-Overview" class="headerlink" title="Inspector Overview"></a>Inspector Overview</h1><ul>
+<li><strong>Đánh giá bảo mật tự động</strong> cho EC2 Instances</li>
+<li>Phân tích hệ điều hành đang chạy <strong>chống lại các lỗ hổng đã biết</strong></li>
+<li>Phân tích khả năng <strong>truy cập mạng không mong muốn</strong></li>
+<li>AWS Inspector Agent phải được cài trong OS trong EC2 instances</li>
+<li>Sau khi đánh giá, bạn sẽ nhận được một báo cáo với danh sách các lỗ hổng bảo mật</li>
+</ul>
+<h1 id="AWS-Config-Overview-gt-Labs"><a href="#AWS-Config-Overview-gt-Labs" class="headerlink" title="AWS Config Overview =&gt; Labs"></a>AWS Config Overview =&gt; Labs</h1><ul>
+<li>Giúp kiểm tra và ghi lại sự tuân thủ của các tài nguyên AWS của bạn</li>
+<li>Giúp ghi lại các cấu hình và thay đổi theo thời gian</li>
+<li>Khả năng lưu trữ dữ liệu cấu hình vào S3 (do Athena phân tích)</li>
+<li>Các câu hỏi có thể được giải quyết bằng AWS Config:<ul>
+<li>Có quyền truy cập SSH không hạn chế vào các security group của tôi không?</li>
+<li>Các bucket có phải đang public access?</li>
+<li>Cấu hình ALB của tôi đã thay đổi như thế nào theo thời gian?</li>
+</ul>
+</li>
+<li>Bạn có thể nhận được các cảnh báo (SNS notification) cho các thay đổi</li>
+<li>AWS Config là dịch vụ cho mỗi region</li>
+<li>Có thể tổng hợp giữa các khu vực và tài khoản</li>
+</ul>
+<h2 id="Lab-03-AWS-Config"><a href="#Lab-03-AWS-Config" class="headerlink" title="Lab 03: AWS Config"></a>Lab 03: AWS Config</h2><h1 id="Macie-Overview-Machine-Learning"><a href="#Macie-Overview-Machine-Learning" class="headerlink" title="Macie Overview - Machine Learning"></a>Macie Overview - Machine Learning</h1><h1 id="Security-Hub-Overview-gt-Co-price"><a href="#Security-Hub-Overview-gt-Co-price" class="headerlink" title="Security Hub Overview =&gt; Có price"></a>Security Hub Overview =&gt; Có price</h1><ul>
+<li>Công cụ bảo mật trung tâm để quản lý bảo mật trên một số tài khoản AWS và tự động kiểm tra bảo mật</li>
+<li>Dashboard được tích hợp hiển thị các trạng thái bảo mật và tuân thủ hiện tại để có các hành động nhanh chóng</li>
+<li>Tự động tổng hợp các cảnh báo ở các định dạng được xác định trước hoặc phát hiện cá nhân từ các dịch vụ AWS và các công cụ đối tác AWS khác nhau:<ul>
+<li>GuardDuty</li>
+<li>Inspector</li>
+<li>Macie</li>
+<li>IAMAccessAnalyzer</li>
+<li>AWS Systems Manager</li>
+<li>AWS Firewall Manager</li>
+<li>AWS Partner Network Solutions</li>
+</ul>
+</li>
+<li>Cần phải enable AWS Config Service trước</li>
+</ul>
+<img src="/img/aws/section16/AWS_security_hub.png" class="[]">
+<h1 id="Amazon-Detective-Overview"><a href="#Amazon-Detective-Overview" class="headerlink" title="Amazon Detective Overview"></a>Amazon Detective Overview</h1><ul>
+<li>GuardDuty, Macie và Security Hub được sử dụng để xác định các vấn đề hoặc phát hiện tiềm ẩn về bảo mật</li>
+<li>Đôi khi các phát hiện bảo mật yêu cầu phân tích sâu hơn để xác định nguyên nhân gốc rễ và thực hiện hành động - đó là một quá trình phức tạp</li>
+<li>Amazon Dêtctive phân tích, điều tra và nhanh chóng xác định nguyên nhân gốc rễ của các vấn đề bảo mật hoặc các hoạt động đáng ngờ (sử dụng ML và đồ thị)</li>
+<li>Tự động thu thập và xử lý các sự kiện từ Nhật ký luồng VPC, CloudTrail, GuardDuty và tạo chế độ xem thống nhất</li>
+<li>Tạo hình ảnh trực quan với các chi tiết và ngữ cảnh để tìm ra nguyên nhân gốc rễ</li>
+</ul>
+<h1 id="AWS-Abuse"><a href="#AWS-Abuse" class="headerlink" title="AWS Abuse"></a>AWS Abuse</h1><ul>
+<li><strong>Báo cáo các tài nguyên AWS bị nghi ngờ được sử dụng cho các mục đích lạm dụng hoặc bất hợp pháp</strong></li>
+<li>Các hành vi lạm dụng &amp; bị cấm là:<ul>
+<li><strong>Spam</strong> - nhận các email không mong muốn từ địa chỉ IP thuộc sở hữu của AWS, các trang web và diễn đàn bị spam bởi các tài nguyên AWS</li>
+<li><strong>Quét cổng</strong> - gửi các gói đến các cổng của bạn để phát hiện ra các gói không an toàn</li>
+<li>DoS hoặc DDoS</li>
+<li>Intrusion attempts – logging in on your resources</li>
+<li>Lưu trữ nội dung bị phản đối hoặc có bản quyền - phân phối nội dung bất hợp pháp hoặc có bản quyền mà không có sự đồng ý</li>
+<li>Phân phối phần mềm độc hại - Tài nguyên AWS phân phối phần mềm để gây hại cho máy tính hoặc máy móc</li>
+</ul>
+</li>
+<li>Contact the AWS Abuse team: AWS abuse form, or <a href="mailto:abuse@amazonaws.com">abuse@amazonaws.com</a></li>
+</ul>
+<h1 id="Root-User-Privileges"><a href="#Root-User-Privileges" class="headerlink" title="Root User Privileges"></a>Root User Privileges</h1><ul>
+<li>Root user = Account Owner (created when the account is created)</li>
+<li>Có toàn quyền truy cập vào tất cả các dịch vụ và tài nguyên AWS</li>
+<li><strong>Khóa các access keys người dùng root tài khoản AWS của bạn!</strong></li>
+<li>Không sử dụng tài khoản gốc cho các công việc hàng ngày, ngay cả các công việc quản trị</li>
+<li>Các hành động chỉ có thể được thực hiện bởi người dùng root:<ul>
+<li>**Thay đổi setting tài khoản (account name, email address, root user password, root user access keys)</li>
+<li>Xem các hoá đơn thuế nhất định</li>
+<li><strong>• Close your AWS account</strong></li>
+<li>Khôi phục quyền người dùng IAM</li>
+<li><strong>Thay đổi hoặc hủy gói AWS Support của bạn</strong></li>
+<li><strong>Đăng kí với tư cách người bán trên Reserved Instance Marketplace</strong></li>
+<li>Cấu hình Amazon S3 bucket để enable MFA</li>
+<li>Sửa hoặc xoá 1 Amazon S3 bucket policy cái mà bao gồm một VPC ID or VPC endpoint ID không hợp lệ</li>
+<li>Đăng nhập GovCloud</li>
+</ul>
+</li>
+</ul>
+<h1 id="Security-amp-Compliance-Summary"><a href="#Security-amp-Compliance-Summary" class="headerlink" title="Security &amp; Compliance Summary"></a>Security &amp; Compliance Summary</h1><ul>
+<li><strong>Shared Responsibility on AWS</strong></li>
+<li><strong>Shield</strong>: Automatic DDoS Protection + 24/7 support for advanced</li>
+<li><strong>WAF</strong>: Firewall to filter incoming requests based on rules</li>
+<li><strong>Penetration Testing</strong></li>
+<li><strong>KMS</strong>: Encryption keys managed by AWS</li>
+<li><strong>CloudHSM</strong>: Hardware encryption, we manage encryption keys</li>
+<li><strong>Artifact</strong>: Get access to compliance reports such as PCI, ISO, etc…</li>
+<li><strong>GuardDuty</strong>: Find malicious behavior with VPC, DNS &amp; CloudTrail Logs </li>
+<li><strong>Inspector</strong> : For EC2 only, install agent and find vulnerabilities</li>
+<li><strong>Config</strong>: Track config changes and compliance against rules</li>
+<li><strong>Macie</strong>: Find sensitive data (ex: PII data) in Amazon S3 buckets</li>
+<li><strong>CloudTrail</strong>:Track API calls made by users within account</li>
+<li><strong>AWS Security Hub</strong>: gather security findings from multiple AWS accounts</li>
+<li><strong>Amazon Detective</strong>: find the root cause of security issues or suspicious activities</li>
+<li><strong>AWS Abuse</strong>: Report AWS resources used for abusive or illegal purposes</li>
+<li><strong>Root user privileges</strong>:<ul>
+<li>Change account settings</li>
+<li>Close your AWS account</li>
+<li>Change or cancel your AWS Support plan</li>
+<li>Register as a seller in the Reserved Instance Marketplace</li>
+</ul>
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Section 16- Security &amp; Compliance</p><p><a href="http://yoursite.com/2021/05/22/Section-16-Security-Compliance/">http://yoursite.com/2021/05/22/Section-16-Security-Compliance/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-05-22</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-05-31</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/mingnv" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/06/11/Note-choi-choi-1106/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Note chơi chơi 1106</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/05/22/Section-14-Cloud-Monitoring/"><span class="level-item">Section 14- Cloud Monitoring</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://yoursite.com/2021/05/22/Section-16-Security-Compliance/';
+            this.page.identifier = '2021/05/22/Section-16-Security-Compliance/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'minh' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-11T11:28:44.000Z">2021-06-11</time></p><p class="title"><a href="/2021/06/11/Note-choi-choi-1106/">Note chơi chơi 1106</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-05-22T15:59:30.000Z">2021-05-22</time></p><p class="title"><a href="/2021/05/22/Section-16-Security-Compliance/">Section 16- Security &amp; Compliance</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-05-22T03:31:32.000Z">2021-05-22</time></p><p class="title"><a href="/2021/05/22/Section-14-Cloud-Monitoring/">Section 14- Cloud Monitoring</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-05-18T14:57:23.000Z">2021-05-18</time></p><p class="title"><a href="/2021/05/18/Section-13-Cloud-Integrations/">Section 13- Cloud Integrations</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-05-18T14:42:53.000Z">2021-05-18</time></p><p class="title"><a href="/2021/05/18/Section-12-Leveraging-the-AWS-Global-Infrastructure/">Section 12- Leveraging the AWS Global Infrastructure</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/AWS-Training/"><span class="level-start"><span class="level-item">AWS Training</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Authentication/"><span class="level-start"><span class="level-item">Authentication</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Clean-our-code/"><span class="level-start"><span class="level-item">Clean our code</span></span><span class="level-end"><span class="level-item tag">13</span></span></a><ul><li><a class="level is-mobile" href="/categories/Clean-our-code/Clean-code-Robert-C-Martin/"><span class="level-start"><span class="level-item">Clean code - Robert C. Martin</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/Clean-our-code/Refactoring-to-Collections/"><span class="level-start"><span class="level-item">Refactoring to Collections</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Database/"><span class="level-start"><span class="level-item">Database</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/categories/Database/MongoDB/"><span class="level-start"><span class="level-item">MongoDB</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Database/MySQL/"><span class="level-start"><span class="level-item">MySQL</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/"><span class="level-start"><span class="level-item">Development and Operation</span></span><span class="level-end"><span class="level-item tag">32</span></span></a><ul><li><a class="level is-mobile" href="/categories/Development-and-Operation/CircleCI-2-0/"><span class="level-start"><span class="level-item">CircleCI 2.0</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Docker/"><span class="level-start"><span class="level-item">Docker</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Google-Cloud-Platform/"><span class="level-start"><span class="level-item">Google Cloud Platform</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Laravel/"><span class="level-start"><span class="level-item">Laravel</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Linux-OS/"><span class="level-start"><span class="level-item">Linux OS</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Web-Server/"><span class="level-start"><span class="level-item">Web Server</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/JAVaScript/"><span class="level-start"><span class="level-item">JAVaScript</span></span><span class="level-end"><span class="level-item tag">6</span></span></a><ul><li><a class="level is-mobile" href="/categories/JAVaScript/Asynchronous/"><span class="level-start"><span class="level-item">Asynchronous</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/JAVaScript/Event/"><span class="level-start"><span class="level-item">Event</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/JAVaScript/React/"><span class="level-start"><span class="level-item">React</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/JP/"><span class="level-start"><span class="level-item">JP</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/Others/"><span class="level-start"><span class="level-item">Others</span></span><span class="level-end"><span class="level-item tag">13</span></span></a><ul><li><a class="level is-mobile" href="/categories/Others/Cong-cu-lap-trinh/"><span class="level-start"><span class="level-item">Công cụ lập trình</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Others/PHPCS/"><span class="level-start"><span class="level-item">PHPCS</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Others/Suu-tam/"><span class="level-start"><span class="level-item">Sưu tầm</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Others/Website-Optimization/"><span class="level-start"><span class="level-item">Website Optimization</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/"><span class="level-start"><span class="level-item">The Art of Readable Code</span></span><span class="level-end"><span class="level-item tag">19</span></span></a><ul><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Chapter-1-Code-Should-Be-Easy-to-Understand/"><span class="level-start"><span class="level-item">Chapter 1 - Code Should Be Easy to Understand</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Part-I-Surface-Level-Improvements/"><span class="level-start"><span class="level-item">Part I - Surface-Level Improvements</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Part-II-Simplifying-Loops-and-Logic/"><span class="level-start"><span class="level-item">Part II - Simplifying Loops and Logic</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Part-III-Reorganizing-Your-Code/"><span class="level-start"><span class="level-item">Part III - Reorganizing Your Code</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Part-IV-Selected-Topics/"><span class="level-start"><span class="level-item">Part IV - Selected Topics</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Unit-Test/"><span class="level-start"><span class="level-item">Unit Test</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/special-day/"><span class="level-start"><span class="level-item">special day</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">June 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/05/"><span class="level-start"><span class="level-item">May 2021</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/04/"><span class="level-start"><span class="level-item">April 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/02/"><span class="level-start"><span class="level-item">February 2021</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/01/"><span class="level-start"><span class="level-item">January 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/06/"><span class="level-start"><span class="level-item">June 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">May 2020</span></span><span class="level-end"><span class="level-item tag">23</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/04/"><span class="level-start"><span class="level-item">April 2020</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/02/"><span class="level-start"><span class="level-item">February 2020</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/01/"><span class="level-start"><span class="level-item">January 2020</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/12/"><span class="level-start"><span class="level-item">December 2019</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/11/"><span class="level-start"><span class="level-item">November 2019</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/09/"><span class="level-start"><span class="level-item">September 2019</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/07/"><span class="level-start"><span class="level-item">July 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/04/"><span class="level-start"><span class="level-item">April 2019</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/API/"><span class="tag">API</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CI-CD/"><span class="tag">CI/CD</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Kanji/"><span class="tag">Kanji</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux-command-line/"><span class="tag">Linux command line</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/apache2/"><span class="tag">apache2</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/async-programing/"><span class="tag">async programing</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/authentication/"><span class="tag">authentication</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clean-comment/"><span class="tag">clean comment</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clean-error/"><span class="tag">clean error</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clean-function/"><span class="tag">clean function</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/collection/"><span class="tag">collection</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/configuration/"><span class="tag">configuration</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-command/"><span class="tag">docker command</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-compose-file-format/"><span class="tag">docker compose file format</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-best-practice/"><span class="tag">docker-best-practice</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-compose-yml/"><span class="tag">docker-compose.yml</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-instructions-docker-best-practice/"><span class="tag">docker-instructions docker-best-practice</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-network/"><span class="tag">docker-network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-volume/"><span class="tag">docker-volume</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/event/"><span class="tag">event</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/event-notification/"><span class="tag">event notification</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/excelfile/"><span class="tag">excelfile</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gcp/"><span class="tag">gcp</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/groupby-mysql/"><span class="tag">groupby, mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/jquery-validation/"><span class="tag">jquery-validation</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/kubernetes/"><span class="tag">kubernetes</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongoDB/"><span class="tag">mongoDB</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/naming/"><span class="tag">naming</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/phpcs/"><span class="tag">phpcs</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/phpcs-phpcsfixer/"><span class="tag">phpcs phpcsfixer</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/process-management/"><span class="tag">process management</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/react-boilerplate/"><span class="tag">react boilerplate</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/regex/"><span class="tag">regex</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/requests/"><span class="tag">requests</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stripe/"><span class="tag">stripe</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sudo-command/"><span class="tag">sudo command</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tips-laravel/"><span class="tag">tips laravel</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tracking-php-script/"><span class="tag">tracking php script</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/unit-test/"><span class="tag">unit test</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/validation/"><span class="tag">validation</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vba/"><span class="tag">vba</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vim/"><span class="tag">vim</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://octodex.github.com/images/spidertocat.png" alt="Minh NV"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Minh NV</p><p class="is-size-6 is-block">_N.V.M_</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Hanoi city, Vietnam</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">113</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">33</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">44</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/minhnv2306" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/minhnv2306"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/profile.php?id=100003860456359"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="http://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="http://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#AWS-Shared-Responsibility-Model"><span class="level-left"><span class="level-item">1</span><span class="level-item">AWS Shared Responsibility Model</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Vi-du-voi-RDS"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Ví dụ với RDS</span></span></a></li><li><a class="level is-mobile" href="#Vi-du-voi-S3"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">Ví dụ với S3</span></span></a></li><li><a class="level is-mobile" href="#Shared-Responsibility-Model-diagram"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">Shared Responsibility Model diagram</span></span></a></li></ul></li><li><a class="level is-mobile" href="#DDoS-Protection-WAF-amp-Shield"><span class="level-left"><span class="level-item">2</span><span class="level-item">DDoS Protection: WAF &amp; Shield</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#DDOS-Protection-on-AWS"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">DDOS Protection on AWS</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#AWS-Shield"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">AWS Shield</span></span></a></li><li><a class="level is-mobile" href="#AWS-WAF-–-Web-Application-Firewall"><span class="level-left"><span class="level-item">2.1.2</span><span class="level-item">AWS WAF – Web Application Firewall</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Kien-truc-vi-du-chong-DDoS"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Kiến trúc ví dụ chống DDoS</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Penetration-Testing"><span class="level-left"><span class="level-item">3</span><span class="level-item">Penetration Testing</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Penetration-Testing-on-your-AWS-Cloud"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Penetration Testing on your AWS Cloud</span></span></a></li><li><a class="level is-mobile" href="#Data-at-rest-vs-Data-in-transit"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">Data at rest vs. Data in transit</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Encryption-with-KMS-amp-CloudHSM"><span class="level-left"><span class="level-item">4</span><span class="level-item">Encryption with KMS &amp; CloudHSM</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#AWS-KMS-Key-Management-Service"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">AWS KMS (Key Management Service)</span></span></a></li><li><a class="level is-mobile" href="#CloudHSM"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">CloudHSM</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#CloudHSM-Diagram"><span class="level-left"><span class="level-item">4.2.1</span><span class="level-item">CloudHSM Diagram</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Types-of-Customer-Master-Keys-CMK"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">Types of Customer Master Keys: CMK</span></span></a></li><li><a class="level is-mobile" href="#Lab-02-Encryption-with-KMS-amp-CloudHSM-Hands-On"><span class="level-left"><span class="level-item">4.4</span><span class="level-item">Lab 02: Encryption with KMS &amp; CloudHSM Hands On</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Secrets-Manager-Overview"><span class="level-left"><span class="level-item">5</span><span class="level-item">Secrets Manager Overview</span></span></a></li><li><a class="level is-mobile" href="#Artifact-Overview-not-really-a-service"><span class="level-left"><span class="level-item">6</span><span class="level-item">Artifact Overview (not really a service)</span></span></a></li><li><a class="level is-mobile" href="#Amazon-GuardDuty"><span class="level-left"><span class="level-item">7</span><span class="level-item">Amazon GuardDuty</span></span></a></li><li><a class="level is-mobile" href="#Inspector-Overview"><span class="level-left"><span class="level-item">8</span><span class="level-item">Inspector Overview</span></span></a></li><li><a class="level is-mobile" href="#AWS-Config-Overview-gt-Labs"><span class="level-left"><span class="level-item">9</span><span class="level-item">AWS Config Overview =&gt; Labs</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Lab-03-AWS-Config"><span class="level-left"><span class="level-item">9.1</span><span class="level-item">Lab 03: AWS Config</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Macie-Overview-Machine-Learning"><span class="level-left"><span class="level-item">10</span><span class="level-item">Macie Overview - Machine Learning</span></span></a></li><li><a class="level is-mobile" href="#Security-Hub-Overview-gt-Co-price"><span class="level-left"><span class="level-item">11</span><span class="level-item">Security Hub Overview =&gt; Có price</span></span></a></li><li><a class="level is-mobile" href="#Amazon-Detective-Overview"><span class="level-left"><span class="level-item">12</span><span class="level-item">Amazon Detective Overview</span></span></a></li><li><a class="level is-mobile" href="#AWS-Abuse"><span class="level-left"><span class="level-item">13</span><span class="level-item">AWS Abuse</span></span></a></li><li><a class="level is-mobile" href="#Root-User-Privileges"><span class="level-left"><span class="level-item">14</span><span class="level-item">Root User Privileges</span></span></a></li><li><a class="level is-mobile" href="#Security-amp-Compliance-Summary"><span class="level-left"><span class="level-item">15</span><span class="level-item">Security &amp; Compliance Summary</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://blog.zhangruipeng.me/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Icarus blog</span></span><span class="level-right"><span class="level-item tag">blog.zhangruipeng.me</span></span></a></li><li><a class="level is-mobile" href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Icarus github</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="https://cdn2.f-cdn.com/contestentries/1423711/31029843/5baf0998cc763_thumb900.jpg" alt="Hello, I am Minh" height="28"></a><p class="is-size-7"><span>&copy; 2021 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">Visited by <span id="busuanzi_value_site_uv">0</span> users</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

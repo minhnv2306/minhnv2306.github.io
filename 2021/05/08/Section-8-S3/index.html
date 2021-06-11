@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Section 8 - S3 - Hello, I am Minh</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hello, I am Minh"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hello, I am Minh"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="S3 là một trong những phần trung tâm xây dựng lên các khối (blocks) trong AWS Nó được quảng cáo là một bộ nhớ “mở rộng vô hạn”  Điều đó có nghĩa là bạn có thể lưu trữ bao nhiêu đối tượng tùy thích lê"><meta property="og:type" content="blog"><meta property="og:title" content="Section 8 - S3"><meta property="og:url" content="http://yoursite.com/2021/05/08/Section-8-S3/"><meta property="og:site_name" content="Hello, I am Minh"><meta property="og:description" content="S3 là một trong những phần trung tâm xây dựng lên các khối (blocks) trong AWS Nó được quảng cáo là một bộ nhớ “mở rộng vô hạn”  Điều đó có nghĩa là bạn có thể lưu trữ bao nhiêu đối tượng tùy thích lê"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://yoursite.com/img/aws/s3/bucket.png"><meta property="og:image" content="http://yoursite.com/img/aws/s3/bucket2.png"><meta property="og:image" content="http://yoursite.com/img/aws/s3/bucket3.png"><meta property="og:image" content="http://yoursite.com/img/aws/s3/bucket4.png"><meta property="og:image" content="http://yoursite.com/img/aws/s3/storage_class_compare.png"><meta property="og:image" content="http://yoursite.com/img/aws/s3/snow_family.png"><meta property="og:image" content="http://yoursite.com/img/aws/s3/snow_family_diagram.png"><meta property="article:published_time" content="2021-05-08T16:57:22.000Z"><meta property="article:modified_time" content="2021-05-09T08:41:45.394Z"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/aws/s3/bucket.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2021/05/08/Section-8-S3/"},"headline":"Section 8 - S3","image":["http://yoursite.com/img/aws/s3/bucket.png","http://yoursite.com/img/aws/s3/bucket2.png","http://yoursite.com/img/aws/s3/bucket3.png","http://yoursite.com/img/aws/s3/bucket4.png","http://yoursite.com/img/aws/s3/storage_class_compare.png","http://yoursite.com/img/aws/s3/snow_family.png","http://yoursite.com/img/aws/s3/snow_family_diagram.png"],"datePublished":"2021-05-08T16:57:22.000Z","dateModified":"2021-05-09T08:41:45.394Z","author":{"@type":"Person","name":"John Doe"},"description":"S3 là một trong những phần trung tâm xây dựng lên các khối (blocks) trong AWS Nó được quảng cáo là một bộ nhớ “mở rộng vô hạn”  Điều đó có nghĩa là bạn có thể lưu trữ bao nhiêu đối tượng tùy thích lê"}</script><link rel="canonical" href="http://yoursite.com/2021/05/08/Section-8-S3/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="https://cdn2.f-cdn.com/contestentries/1423711/31029843/5baf0998cc763_thumb900.jpg" alt="Hello, I am Minh" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-05-08T16:57:22.000Z" title="5/8/2021, 11:57:22 PM">2021-05-08</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-05-09T08:41:45.394Z" title="5/9/2021, 3:41:45 PM">2021-05-09</time></span><span class="level-item">33 minutes read (About 4882 words)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">Section 8 - S3</h1><div class="content"><ul>
+<li>S3 là một trong những phần trung tâm xây dựng lên các khối (blocks) trong AWS</li>
+<li>Nó được quảng cáo là một bộ nhớ “mở rộng vô hạn”</li>
+</ul>
+<p>Điều đó có nghĩa là bạn có thể lưu trữ bao nhiêu đối tượng tùy thích lên Amazon S3 và cho đến nay, chưa ai có thể sử dụng hết dung lượng lưu trữ của Amazon S3.</p>
+<p>Đó là lý do tại sao AWS cho biết đó là khả năng mở rộng bộ nhớ vô hạn.</p>
+<a id="more"></a>
+<h2 id="S3-dung-de-lam-gi"><a href="#S3-dung-de-lam-gi" class="headerlink" title="S3 dùng để làm gì"></a>S3 dùng để làm gì</h2><ul>
+<li>Rất nhiều websites sử dụng Amazon S3 như một xương sống</li>
+<li>Rất nhiều dịch vụ AWS có thể tích hợp tốt với S3. Ví dụ như nếu chúng ta tạo một EBS snapshot, và sau đó thực sự snapshot này được lưu trữ trên Amazon S3. Nhưng chúng ta không nhìn thấy, nhưng đó là những gì diễn ra</li>
+<li>Trong phạm vi chứng chỉ, chúng ta sẽ không nói sâu về S3. Ở level CCP sẽ yêu cầu sâu hơn.</li>
+</ul>
+<h2 id="S3-Use-cases"><a href="#S3-Use-cases" class="headerlink" title="S3 Use cases"></a>S3 Use cases</h2><ul>
+<li>Backup và lưu trữ</li>
+<li>Khắc phục thảm hoạ: Copy dữ liệu S3 cho nhiều region khác nhau</li>
+<li>Archive</li>
+<li>Hybrid Cloud storage </li>
+<li>Application hosting</li>
+<li>Mdia hosting</li>
+<li>Data lakes &amp; big data analytics </li>
+<li>Software delivery</li>
+<li>Static website</li>
+</ul>
+<h2 id="Amazon-S3-Overview-Buckets"><a href="#Amazon-S3-Overview-Buckets" class="headerlink" title="Amazon S3 Overview - Buckets"></a>Amazon S3 Overview - Buckets</h2><ul>
+<li>Amazon S3 cho phép mọi người lưu trữ objects (files) trong “buckets” (thư mục)</li>
+<li><strong>Các Bucket phải có 1 tên duy nhất phạm vi toàn cục (cho tất cả các region tất cả tài khoản)</strong></li>
+<li>Bucket được định nghĩa ở region level</li>
+<li>S3 là 1 dịch vụ global nhưng các bucket lại được trong trong 1 region</li>
+<li>Các chú ý quy tắc đặt tên<ul>
+<li>Không viết hoa</li>
+<li>Không có kí tự gạch dưới</li>
+<li>3-63 kí tự</li>
+<li>Không là một IP</li>
+<li>Phải bắt đầu bằng chữ thường hoặc số</li>
+</ul>
+</li>
+</ul>
+<h2 id="Amazon-S3-Overview-Objects"><a href="#Amazon-S3-Overview-Objects" class="headerlink" title="Amazon S3 Overview - Objects"></a>Amazon S3 Overview - Objects</h2><ul>
+<li>Objects (files) có 1 key</li>
+<li>Key này là <strong>FULL</strong> đường dẫn<ul>
+<li>s3://my-bucket/<strong>my_file.txt</strong></li>
+<li>s3://my-bucket/<strong>my_folder1/another_folder/my_file.txt</strong></li>
+</ul>
+</li>
+<li>Key bao gồm <strong>prefix + object name</strong></li>
+<li>Không có khái niệm “thư mục” trong các buckets (mặc dù nhìn UI bạn có thể nghĩ như vậy)</li>
+<li>Chỉ có các keys với tên rất dài thì chứa dấu gạch chéo (“/“)</li>
+<li>Giá trị của objects là nội dung bên trong<ul>
+<li>Max Object Size là 5TB (5000GB)</li>
+<li>Nếu bạn upload lớn hơn 5GB, phải sử dụng “multi-part upload”</li>
+</ul>
+</li>
+<li><strong>Metadata</strong> (danh sách key/value - metadata của người dùng hoặc hệ thống)</li>
+<li><strong>Tags</strong> (cặp khoá Unicode - tối đa 10) - hữu ích cho việc bảo mật / vòng đời</li>
+<li><strong>Version ID</strong> (nếu bạn enabled versioning)</li>
+</ul>
+<h2 id="Lab-01-S3-Hands-On"><a href="#Lab-01-S3-Hands-On" class="headerlink" title="Lab 01: S3 Hands On"></a>Lab 01: S3 Hands On</h2><ul>
+<li>Tạo first bucket (S3 không hỗ trợ Global Region)</li>
+<li>Upload 1 object</li>
+<li>Open image</li>
+</ul>
+<ul>
+<li>Object actions =&gt; Open</li>
+<li>Quay lại màn Detail object. Kick Object URL =&gt; Access Denied<br>Nguyên nhân là bucket chưa public</li>
+</ul>
+<p>Hãy để ý link open bằng Object action =&gt; looj các my credentials</p>
+<ul>
+<li>Tạo images folder, up load ảnh vào thư mục này =&gt; xoá folder</li>
+</ul>
+<h1 id="S3-Security-Bucket-Policy"><a href="#S3-Security-Bucket-Policy" class="headerlink" title="S3 Security: Bucket Policy"></a>S3 Security: Bucket Policy</h1><p> Có 2 thứ liên quan đến Security của S3</p>
+<ul>
+<li>User based: Từ phía người dùng =&gt; định nghĩa các IAM cho phép người dùng nhất định truy cập IAM</li>
+<li>Resource Based: Tạo các Bucket Policies</li>
+<li><strong>Note</strong>: Một IAM có thể truy cập một S3 Object nếu<ul>
+<li>Quyền của user IAM cho phép nó HOẶC resource policy CHO PHÉP nó</li>
+<li>VÀ không có DENY nào</li>
+</ul>
+</li>
+</ul>
+<img src="/img/aws/s3/bucket.png" class="[]">
+<img src="/img/aws/s3/bucket2.png" class="[]">
+<img src="/img/aws/s3/bucket3.png" class="[]">
+<img src="/img/aws/s3/bucket4.png" class="[]">
+<h2 id="S3-Bucket-Policies"><a href="#S3-Bucket-Policies" class="headerlink" title="S3 Bucket Policies"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html">S3 Bucket Policies</a></h2><ul>
+<li>Policies cụ thể hoá dưới dạng JSON<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  <span class="attr">&quot;Version&quot;</span>:<span class="string">&quot;2012-10-17&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;Statement&quot;</span>:[</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;Sid&quot;</span>:<span class="string">&quot;AddCannedAcl&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;Effect&quot;</span>:<span class="string">&quot;Allow&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;Principal&quot;</span>: &#123;<span class="attr">&quot;AWS&quot;</span>: [<span class="string">&quot;arn:aws:iam::111122223333:root&quot;</span>,<span class="string">&quot;arn:aws:iam::444455556666:root&quot;</span>]&#125;,</span><br><span class="line">      <span class="attr">&quot;Action&quot;</span>:[<span class="string">&quot;s3:PutObject&quot;</span>,<span class="string">&quot;s3:PutObjectAcl&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;Resource&quot;</span>:<span class="string">&quot;arn:aws:s3:::DOC-EXAMPLE-BUCKET/*&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;Condition&quot;</span>:&#123;<span class="attr">&quot;StringEquals&quot;</span>:&#123;<span class="attr">&quot;s3:x-amz-acl&quot;</span>:[<span class="string">&quot;public-read&quot;</span>]&#125;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Resource: buckets and objetcs</li>
+<li>Action: Tập các API cho phép hoặc từ chối</li>
+<li>Effect: Allow / Deny</li>
+<li>Principal: Tài khoản hoặc user áp dụng policy này</li>
+</ul>
+<h2 id="S3-Object-Lock-amp-Glacier-Vault-Lock"><a href="#S3-Object-Lock-amp-Glacier-Vault-Lock" class="headerlink" title="S3 Object Lock &amp; Glacier Vault Lock"></a>S3 Object Lock &amp; Glacier Vault Lock</h2><p>S3 Object Lock</p>
+<ul>
+<li>Áp dụng mô hình WORM (Write Once Read Many)</li>
+<li>Ngăn chặn việc xoá phiên bản của đối tượng trong một khoảng thời gian nhất định</li>
+</ul>
+<p>Glacier Vault Lock</p>
+<ul>
+<li>Áp dụng mô hình WORM (Write Once Read Many)</li>
+<li>Khoá các policy đối với các việc sửa đổi trong tương lai (không thể thay đổi, xoá được nữa)</li>
+<li>Hữu ích cho việc tuân thủ và lưu trữ dữ liệu</li>
+</ul>
+<h2 id="Lab-02-S3-Security-Bucket-Policy-Hands-On"><a href="#Lab-02-S3-Security-Bucket-Policy-Hands-On" class="headerlink" title="Lab 02: S3 Security: Bucket Policy Hands On"></a>Lab 02: S3 Security: Bucket Policy Hands On</h2><p>Package =&gt; Permission<br>Để có thể sử dụng Bucket Policy, cần disable public access<br>So the bucket policy setting is right here,<br>but to write a public bucket policy, I must first<br>disable all the public access settings<br>that are turned on for these buckets.</p>
+<ul>
+<li>Sau khi disbale =&gt; Edit Bucket policy</li>
+</ul>
+<p>Chọn Pplicy generator để sinh được bucket policy</p>
+<p>Bucket ARN /* =&gt; Sau đó được generate policy dưới dạng JSON</p>
+<p>=&gt; Click vào Object URL để xem có public chưa</p>
+<h1 id="S3-Websites"><a href="#S3-Websites" class="headerlink" title="S3 Websites"></a>S3 Websites</h1><ul>
+<li>S3 có thể làm một host static websites và chúng có thể được truy cập trên www</li>
+<li>Website URL sẽ có dạng<ul>
+<li><code>&lt;bucket-name&gt;.s3-website-&lt;AWS-region&gt;.amazonaws.com</code> OR</li>
+<li><code>&lt;bucket-name&gt;.s3-website.&lt;AWS-region&gt;.amazonaws.com</code></li>
+</ul>
+</li>
+<li><strong>Nếu bạn nhận lỗi 403 (Forbidden), hãy kiểm tra và chắc chắn rằng các bucket policy cho phép quyền public read</strong><h2 id="Lab-03-S3-Websites-Hands-on"><a href="#Lab-03-S3-Websites-Hands-on" class="headerlink" title="Lab 03: S3 Websites Hands on"></a>Lab 03: S3 Websites Hands on</h2></li>
+</ul>
+<p>Upload file index.html lên S3</p>
+<p>Chọn Propertity =&gt; Static Website hosting<br>Enable nó lên :D</p>
+<ul>
+<li>Làm sao để có thể test<br>=&gt; Kéo xuống và sẽ thấy Bucket website Endpoint<br>=&gt; URL như slide :v</li>
+</ul>
+<h1 id="S3-Versioning"><a href="#S3-Versioning" class="headerlink" title="S3 Versioning"></a>S3 Versioning</h1><ul>
+<li>Khi bạn đã có các file trên S3, bạn có thể đánh version cho chúng</li>
+<li>Chức năng được hỗ trợ với <strong>bucket level</strong></li>
+<li>Khi bạn ghi đè key giống nhau, version sẽ tăng: 1,2,3</li>
+<li>S3 Versioning rất hữu ích cho các buckets của bạn<ul>
+<li>Bảo vệ việc xoá file ngoài ý muốn (khả năng khôi phục lại 1 version)</li>
+<li>Dễ dàng rollback lại các version trước</li>
+</ul>
+</li>
+<li><strong>Note</strong><ul>
+<li>Một vài file khi không có version trước đó, khi enable version sẽ có version là “null”</li>
+<li>Việc tạm dừng version sẽ không xoá các version trước đó</li>
+</ul>
+</li>
+</ul>
+<h2 id="Lab-04-Versioning-hands-On"><a href="#Lab-04-Versioning-hands-On" class="headerlink" title="Lab 04: Versioning hands On"></a>Lab 04: Versioning hands On</h2><ul>
+<li>Đầu tiên, enable Bucket Versioning</li>
+<li>Upload lại file index.html đã được sửa đổi nội dung</li>
+<li>Click vào xem file index.html =&gt; Version =&gt; thấy 2 version</li>
+<li>Rollback version cũ: Enable List version. Chọn file cho version hiện tại =&gt; Delete</li>
+<li>Xoá thử 1 file ảnh và khôi phục dựa vào list version</li>
+</ul>
+<h1 id="S3-Server-Access-Logging"><a href="#S3-Server-Access-Logging" class="headerlink" title="S3 Server Access Logging"></a>S3 Server Access Logging</h1><p>Well, chúng ta xem xét ví dụ, dữ liệu đó có thể được phân tích sau này bằng cách sử dụng công cụ phân tích dữ liệu, để thực sự hiểu điều gì đã xảy ra nếu như một tệp đã bị xóa hoặc bạn nhận được yêu cầu tệp quá nhiều, loại thông tin này. Vì vậy, nhật ký truy cập có thể rất, rất hữu ích.</p>
+<ul>
+<li>Để phục vụ mục đích kiểm tra, bạn có thể muốn ghi <strong>toàn bọ log truy cấp tới S3 buckets</strong></li>
+<li>Bất kì các request nào được gửi tới S3 từ bất kì tài khoản, chấp nhận hoặc từ chối đều được log lại vào S3 bucket khác</li>
+<li>Các dữ liệu này có thể được sử dụng làm công cụ phân tích dữ liệu</li>
+<li>Điều này cực kì hữu ích để tìm ra nguyên nhân gốc rễ của các vấn đề bạn có thể gặp phải hoặc sử dụng làm mục đích kiểm tra sử dụng, các lỗi bất thường …</li>
+</ul>
+<h2 id="Lab-05-S3-Server-Access-Logging-Hands-On"><a href="#Lab-05-S3-Server-Access-Logging-Hands-On" class="headerlink" title="Lab 05: S3 Server Access Logging Hands On"></a>Lab 05: S3 Server Access Logging Hands On</h2><ul>
+<li>Create new Bucket</li>
+<li>Chọn Bucket =&gt; Property =&gt; Nhìn thấy Server access logging</li>
+<li>Lúc enable =&gt; target bucket??? Chọn chính nó luôn thêm /logs</li>
+<li>Testing</li>
+</ul>
+<ul>
+<li>Mở lại file ảnh</li>
+<li>Vào lại bucket, thấy sinh ra file trong thư mục /logs</li>
+</ul>
+<h1 id="S3-Replication-Overview-CRR-amp-SRR"><a href="#S3-Replication-Overview-CRR-amp-SRR" class="headerlink" title="S3 Replication Overview (CRR &amp; SRR)"></a>S3 Replication Overview (CRR &amp; SRR)</h1><ul>
+<li><strong>Bạn phải enable versioning</strong> ở cả nguồn và đích</li>
+<li>Cross Region Replication (CRR): sử dụng cho các trường hợp tuân thủ dữ liệu, độ trể thấp, nhân rộng trên nhiều tài khoản</li>
+<li>Same Region Replication (SRR): sử dụng cho các trường hợp tổng hợp log, sao chép trực tiếp giữa tài khoản production và test</li>
+<li>Buckets có thể trong các tài khoản khác nhau</li>
+<li>Việc sao chép là không đồng bộ</li>
+<li>Bạn phải cấp quyền IAM thích hợp cho S3</li>
+</ul>
+<h2 id="Lan-06-S3-Replication-Hands-On"><a href="#Lan-06-S3-Replication-Hands-On" class="headerlink" title="Lan 06:  S3 Replication Hands On"></a>Lan 06:  S3 Replication Hands On</h2><ul>
+<li>Create new bucket - Chọn region tại us-east-1 và sao lưu sang châu Âu =&gt; enable versioning</li>
+<li>Vào bucket =&gt; managament =&gt; Create replication rule<br>Chọn tule =&gt; This rule applies to all objects in the bucket</li>
+<li>Sau khi tạo xong, vào replication object =&gt; 0 objects?? Do từ lúc enbale replication thì chưa có file nào</li>
+<li>Same version luôn</li>
+<li>Mỗi lần upload bên main bên replication sẽ nhận theo</li>
+</ul>
+<p>So pretty cool, we’ve just set up a replication between buckets in the region EU Ireland ES West one into a replica buckets in the region US East Northern Virginia, US East one.</p>
+<h1 id="S3-Durability-and-Availability"><a href="#S3-Durability-and-Availability" class="headerlink" title="S3 Durability and Availability"></a>S3 Durability and Availability</h1><p>Tính bền vững</p>
+<ul>
+<li>High durability (99.999999999%, 11 9’s) of objects across multiple AZ</li>
+<li>If you store 10,000,000 objects with Amazon S3, you can on average expect to incur a loss of a single object once every 10,000 years</li>
+<li>Same for all storage classes</li>
+</ul>
+<p>Tính khả dụng</p>
+<ul>
+<li>Đo lường tĩnh sẵn có của một dịch vụ</li>
+<li>Tiêu chuẩn S3 đáp ứng tính khả dụng 99,99%, điều đó có nghĩa là nó chỉ không khả dụng trong 53 phút trong 1 năm</li>
+<li>Tính khả dụng thay đổi tuỳ thuộc vào class lữu trữ</li>
+</ul>
+<h1 id="S3-Storage-Classes-Overview"><a href="#S3-Storage-Classes-Overview" class="headerlink" title="S3 Storage Classes Overview"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/s3/storage-classes/">S3 Storage Classes Overview</a></h1><p>Bây giờ chúng tôi đã lưu trữ tệp của mình vào Amazon S3 nhưng chúng tôi có các tùy chọn khác nhau để lưu trữ tệp của mình trên các lớp lưu trữ khác nhau.</p>
+<p><strong>Và những điều này có thể giúp chúng tôi tiết kiệm chi phí.</strong></p>
+<p>Vì vậy, những gì chúng tôi đã sử dụng cho đến nay<br>được gọi là Amazon S3 General Purpose Storage, lớp này sẽ được sử dụng phổ biến nhưng sau đó bạn có thể tối ưu hóa nó.</p>
+<p>Ví dụ: nếu bạn đang tải lên một tệp mà bạn biết rằng sẽ không được truy cập thường xuyên<br>Vì vậy, truy cập không thường xuyên thì bạn có một tầng mới được gọi là SAmazon S3 Standard-Infrequent Access (IA)</p>
+<p>6 class trong S3</p>
+<ul>
+<li>Amazon S3 Standard - General Purpose</li>
+<li>Amazon S3 Standard-Infrequent Access (IA)</li>
+<li>Amazon S3 One Zone-Infrequent Access</li>
+<li>Amazon S3 Intelligent Tiering</li>
+<li>Amazon Glacier</li>
+<li>Amazon Glacier Deep Archive</li>
+</ul>
+<h2 id="S3-Standard-–-General-Purposes"><a href="#S3-Standard-–-General-Purposes" class="headerlink" title="S3 Standard – General Purposes"></a>S3 Standard – General Purposes</h2><ul>
+<li>99.99% Availability</li>
+<li>Được sử dụng để lưu trữ các dữ liệu thường xuyên được truy cập</li>
+<li>Độ trễ thấp và thông lượng cao</li>
+<li>Sustain 2 concurrent facility failures. Dữ liệu của bạn vẫn an toàn</li>
+<li>Use cases: Phân tích dữ liệu lớn, ứng dụng mobile và gaming, nội dung phân tán …</li>
+</ul>
+<h2 id="S3-Standard-–-Infrequent-Access-IA"><a href="#S3-Standard-–-Infrequent-Access-IA" class="headerlink" title="S3 Standard – Infrequent Access (IA)"></a>S3 Standard – Infrequent Access (IA)</h2><ul>
+<li>Thích hợp với các dữ liệu ít truy cập thường xuyên nhưng yêu cầu truy cập nhanh khi cần</li>
+<li>99.9% Availability</li>
+<li>Chi phí thấp hơn Amzon S3 Standard nhưng phát sinh phí truy cập</li>
+<li>Sustain 2 concurrent facility failures</li>
+<li>Use cases: Lưu các dữ liệu để khôi phục, sao lưu</li>
+</ul>
+<h2 id="S3-Intelligent-Tiering"><a href="#S3-Intelligent-Tiering" class="headerlink" title="S3 Intelligent-Tiering"></a>S3 Intelligent-Tiering</h2><ul>
+<li>99.9% Availability</li>
+<li>Độ trễ thấp và thông lượng cao như S3 Standard</li>
+<li>Tối ưu hóa chi phí bằng cách tự động di chuyển các đối tượng giữa hai cấp truy cập dựa trên việc thay đổi các mẫu truy cập<ul>
+<li>Frequent access</li>
+<li>Infrequent access</li>
+</ul>
+</li>
+<li>Có khả năng chống lại các sự kiện ảnh hưởng đến toàn bộ Availability Zone</li>
+</ul>
+<h2 id="S3-One-Zone-Infrequent-Access-IA"><a href="#S3-One-Zone-Infrequent-Access-IA" class="headerlink" title="S3 One Zone - Infrequent Access (IA)"></a>S3 One Zone - Infrequent Access (IA)</h2><ul>
+<li>Giống với IA nhưng dữ liệu chỉ được lưu trữ trong 1 single AZ</li>
+<li>99.5% Availability</li>
+<li>Độ trễ thấp và hiệu suất dung lượng cao</li>
+<li>Chi phí thấp hơn S3-IA (khoảng 20%)</li>
+<li>Use cases: Lưu trữ các bản sao dự phòng thứ cấp của dữ liệu tại chỗ hoặc lưu trữ dữ liệu bạn có thể tạo lại</li>
+</ul>
+<h2 id="Amazon-Glacier-amp-Glacier-Deep-Archive"><a href="#Amazon-Glacier-amp-Glacier-Deep-Archive" class="headerlink" title="Amazon Glacier &amp; Glacier Deep Archive"></a>Amazon Glacier &amp; Glacier Deep Archive</h2><ul>
+<li>Chi phí thấp (tính theo GB/tháng) để lưu trữ/sao lưu</li>
+<li>Dữ liệu được lưu trữ lâu dài (nhiều năm)</li>
+<li>Các tuỳ chọn truy xuất khác nhau và có phí khi truy suất</li>
+<li>Amazon Glacier – giá rẻ<ul>
+<li>Nhanh (1 đến 5 phút)</li>
+<li>Tiêu chuẩn (3 đến 5 giờ)</li>
+<li>Số lượng lớn (5 đến 12 giờ)</li>
+</ul>
+</li>
+<li><p>Amazon Glacier Deep Archive – rẻ nhất</p>
+<ul>
+<li>Tiêu chuẩn (12 giờ)</li>
+<li>Số lượng lớn (48 giờ)</li>
+</ul>
+<p>S3 Storage Class Comparison</p>
+</li>
+</ul>
+<img src="/img/aws/s3/storage_class_compare.png" class="[]">
+<h2 id="S3-–-Moving-between-storage-classes"><a href="#S3-–-Moving-between-storage-classes" class="headerlink" title="S3 – Moving between storage classes"></a>S3 – Moving between storage classes</h2><p> Bạn hoàn toàn có thể các objects giữa các storage class</p>
+<ul>
+<li>Đối với các object ít truy cập, chuyển chúng sang STANDARD_IA</li>
+<li>Đối với các object bạn lưu trữ mà không cần real-time, GLACIER hoặc DEEP_ARCHIVE</li>
+<li>Di chuyển các objects có thể làm tự động sử dụng <strong>lifecycle configuration</strong><h2 id="Lab-07-S3-Storage-Classes-Hands-On"><a href="#Lab-07-S3-Storage-Classes-Hands-On" class="headerlink" title="Lab 07: S3 Storage Classes Hands On"></a>Lab 07: S3 Storage Classes Hands On</h2><ul>
+<li>Upload 1 file lên S3. Lúc này trong mục Addtional upload options có mục Storage Class</li>
+<li>Mặc định sẽ là Standard class</li>
+<li>Sau khi đã upload xong, ấn vào chi tiết, kéo xuống dưới sẽ nhìn thấy mục Storage class</li>
+<li>Ok check tiếp, mở mục List version thấy được các storage class</li>
+<li>Việc tiếp theo là bạn muốn chuyển toàn bọ object của bạn sang 1 storage class nhất đinh<br>=&gt; Chọn Tab Managêmnt =&gt; Lifecycle rules =&gt; Create<br>=&gt; Apply all objects in the bucket<br>Đoạn actions tự hiểu</li>
+</ul>
+</li>
+</ul>
+<p>Sau khi đã setting hết, nhìn xuống Timeline summary để xem chi tiết</p>
+<p>=&gt; Tối ưu hoá chi phí nếu bạn có quá nhiều objects trên S3 buckets</p>
+<h1 id="Shared-Responsibility-Model-for-S3"><a href="#Shared-Responsibility-Model-for-S3" class="headerlink" title="Shared Responsibility Model for S3"></a>Shared Responsibility Model for S3</h1><p>AWS</p>
+<ul>
+<li>Infrastructure (global security, durability, availability, sustain concurrent loss of data in two facilities)</li>
+<li>Configuration and vulnerability analysis</li>
+<li>Compliance validation</li>
+</ul>
+<p>You</p>
+<ul>
+<li>S3 Versioning</li>
+<li>S3 Bucket Policies</li>
+<li>S3 Replication Setup</li>
+<li>Logging and Monitoring • S3 Storage Classes</li>
+<li>Data encryption at rest and in transit</li>
+</ul>
+<h1 id="AWS-Snow-Family-Overview"><a href="#AWS-Snow-Family-Overview" class="headerlink" title="AWS Snow Family Overview"></a>AWS Snow Family Overview</h1><ul>
+<li>Sử dụng để security cao hơn, 2 cách là Thu thập và xử lý dữ liệu trên edge hoặc migrade data into and out of AWS</li>
+<li>Data migration: 3 loại (Snowcone, Snowball Edge, Snowmobile)</li>
+<li>Edge computing: 2 loại (Snowcone, Snowball Edge)</li>
+</ul>
+<h2 id="Why-Data-Migration-with-AWS-Snow-Family"><a href="#Why-Data-Migration-with-AWS-Snow-Family" class="headerlink" title="Why Data Migration with AWS Snow Family"></a>Why Data Migration with AWS Snow Family</h2><p>Các thách thức được đặt ra</p>
+<ul>
+<li>Kết nối hạn chế</li>
+<li>Băng thông hạn chế</li>
+<li>Chi phí mạng cao</li>
+<li>Băng thông được chia sẻ (không thể tối đa hóa đường truyền)</li>
+<li>Kết nối ổn định</li>
+</ul>
+<blockquote>
+<p><strong>AWS Snow Family: offline devices to perform data migration. (thiết bị ngoại tuyến để thực hiện việc di chuyển dữ liệu)</strong></p>
+<p>Nếu mất hơn 1 tuần để chuyển dữ liệu qua network, hãy sử dụng Snowball devices!</p>
+</blockquote>
+<img src="/img/aws/s3/snow_family.png" class="[]">
+<h2 id="Diagrams"><a href="#Diagrams" class="headerlink" title="Diagrams"></a>Diagrams</h2><p>Thực tế thì cách tranfer dữ liệu này là qua tầng vật lý chứ không phải qua network</p>
+<img src="/img/aws/s3/snow_family_diagram.png" class="[]">
+<h2 id="Lab-08-AWS-Snow-Family-Hands-On"><a href="#Lab-08-AWS-Snow-Family-Hands-On" class="headerlink" title="Lab 08 - AWS Snow Family Hands On"></a>Lab 08 - AWS Snow Family Hands On</h2><p>Vào AWS Service =&gt; AWS Snow Family</p>
+<p>=&gt; Order an AWS Snow family device<br>=&gt; Import to S3</p>
+<p>Note: Bước 7, review a job và ĐỪNG CLICK CREATE vì phí cao và đây không phải là dịch vụ miễn phí</p>
+<ul>
+<li>Nếu là computing =&gt; Lúc Order =&gt; Local compute and storage only</li>
+</ul>
+<p>Phần này còn khá nhiều, khi nào cần sẽ tổng hợp thêm</p>
+<p>To be continue ….</p>
+<h2 id="AWS-OpsHub"><a href="#AWS-OpsHub" class="headerlink" title="AWS OpsHub"></a>AWS OpsHub</h2><ul>
+<li>Trước đây, để sử dụng các Snow Family devices, bạn cần một CLI (Command Line Interface tool)</li>
+<li>Hiện nay bạn có thể sử dụng <strong>AWS OpsHub</strong> (một phần mềm bạn có thể cài trên máy / laptop) để quản lý các Snow Family Device:<ul>
+<li>Mở khoá và định các cấu hình riêng lẻ hoặc theo cluster</li>
+<li>Chuyển files</li>
+<li>Khởi chạy và quản lý các phiên bản chạy trên Snow Family Device</li>
+<li>Giám sát thông số thiết bị</li>
+<li>Khởi chạy các dịch vụ tương thích với thiết bị của bạn (ví dụ như Amazon EC2 Instance AWS DataSunc, Network File System (NFS))</li>
+</ul>
+</li>
+</ul>
+<h2 id="Hybrid-Cloud-for-Storage"><a href="#Hybrid-Cloud-for-Storage" class="headerlink" title="Hybrid Cloud for Storage"></a>Hybrid Cloud for Storage</h2><p>AWS đang thúc đẩy “đám mây lai”</p>
+<ul>
+<li>Một phần cơ sở hạ tầng của bạn là “tại chỗ” (on-premises”</li>
+<li>Một phần cơ sở hạ tầng của bạn là trên đám mây</li>
+</ul>
+<p>Điều này có thể là do</p>
+<ul>
+<li>Long cloud migrations</li>
+<li>Yêu cầu bảo mật</li>
+<li>Yêu cầu các tuân thủ</li>
+<li>Chiến lược IT</li>
+</ul>
+<p>S3 là công nghệ lưu trữ độc quyền (không như EFS / NFS), vậy làm sao để hiển thị dữ liệu S3 tại chỗ?</p>
+<p>=&gt; AWS Storage Gateway!</p>
+<h2 id="AWS-Storage-Gateway"><a href="#AWS-Storage-Gateway" class="headerlink" title="AWS Storage Gateway"></a>AWS Storage Gateway</h2><ul>
+<li>Đây là cầu nối giữa dữ liệu “tại chỗ” và dữ liệu trên cloud trong S3</li>
+<li>Dịch vụ lưu trữ kết hợp để cho phép tại chỗ sử dụng liền mạch AWS Cloud</li>
+</ul>
+<p>Phần này sẽ tìm hiểu sau …</p>
+<h1 id="S3-Summary"><a href="#S3-Summary" class="headerlink" title="S3 Summary"></a>S3 Summary</h1><ul>
+<li><strong>Buckets vs Objects</strong>: global unique name, tied to a region</li>
+<li><strong>S3 security</strong>: IAM policy, S3 Bucket Policy (public access), S3 Encryption</li>
+<li><strong>S3 Websites</strong>: host a static website on Amazon S3</li>
+<li><strong>S3 Versioning</strong>: multiple versions for files, prevent accidental deletes</li>
+<li><strong>S3 Access Logs</strong>: log requests made within your S3 bucket</li>
+<li><strong>S3 Replication</strong>: same-region or cross-region, must enable versioning</li>
+<li><strong>S3 Storage Classes</strong>: Standard, IA, 1Z-IA, Intelligent, Glacier, Glacier Deep Archive • S3 Lifecycle Rules: transition objects between classes</li>
+<li><strong>S3 GlacierVault Lock / S3 Object Lock</strong>:WORM (Write Once Read Many)</li>
+<li><strong>Snow Family</strong>: import data onto S3 through a physical device, edge computing</li>
+<li><strong>OpsHub</strong>: desktop application to manage Snow Family devices</li>
+<li><strong>Storage Gateway</strong>: hybrid solution to extend on-premises storage to S3</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Section 8 - S3</p><p><a href="http://yoursite.com/2021/05/08/Section-8-S3/">http://yoursite.com/2021/05/08/Section-8-S3/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-05-08</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-05-09</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/mingnv" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/05/09/Section-9-Databases-Analytics/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Section 9- Databases &amp; Analytics</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/05/08/Section-7-ELB-ASG-Elastic-Load-Balancing-Auto-Scaling-Groups/"><span class="level-item">Section 7 - ELB &amp; ASG - Elastic Load Balancing &amp; Auto Scaling Groups</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://yoursite.com/2021/05/08/Section-8-S3/';
+            this.page.identifier = '2021/05/08/Section-8-S3/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'minh' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-11T11:28:44.000Z">2021-06-11</time></p><p class="title"><a href="/2021/06/11/Note-choi-choi-1106/">Note chơi chơi 1106</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-05-22T15:59:30.000Z">2021-05-22</time></p><p class="title"><a href="/2021/05/22/Section-16-Security-Compliance/">Section 16- Security &amp; Compliance</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-05-22T03:31:32.000Z">2021-05-22</time></p><p class="title"><a href="/2021/05/22/Section-14-Cloud-Monitoring/">Section 14- Cloud Monitoring</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-05-18T14:57:23.000Z">2021-05-18</time></p><p class="title"><a href="/2021/05/18/Section-13-Cloud-Integrations/">Section 13- Cloud Integrations</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-05-18T14:42:53.000Z">2021-05-18</time></p><p class="title"><a href="/2021/05/18/Section-12-Leveraging-the-AWS-Global-Infrastructure/">Section 12- Leveraging the AWS Global Infrastructure</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/AWS-Training/"><span class="level-start"><span class="level-item">AWS Training</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Authentication/"><span class="level-start"><span class="level-item">Authentication</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Clean-our-code/"><span class="level-start"><span class="level-item">Clean our code</span></span><span class="level-end"><span class="level-item tag">13</span></span></a><ul><li><a class="level is-mobile" href="/categories/Clean-our-code/Clean-code-Robert-C-Martin/"><span class="level-start"><span class="level-item">Clean code - Robert C. Martin</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/Clean-our-code/Refactoring-to-Collections/"><span class="level-start"><span class="level-item">Refactoring to Collections</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Database/"><span class="level-start"><span class="level-item">Database</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/categories/Database/MongoDB/"><span class="level-start"><span class="level-item">MongoDB</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Database/MySQL/"><span class="level-start"><span class="level-item">MySQL</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/"><span class="level-start"><span class="level-item">Development and Operation</span></span><span class="level-end"><span class="level-item tag">32</span></span></a><ul><li><a class="level is-mobile" href="/categories/Development-and-Operation/CircleCI-2-0/"><span class="level-start"><span class="level-item">CircleCI 2.0</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Docker/"><span class="level-start"><span class="level-item">Docker</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Google-Cloud-Platform/"><span class="level-start"><span class="level-item">Google Cloud Platform</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Laravel/"><span class="level-start"><span class="level-item">Laravel</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Linux-OS/"><span class="level-start"><span class="level-item">Linux OS</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Development-and-Operation/Web-Server/"><span class="level-start"><span class="level-item">Web Server</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/JAVaScript/"><span class="level-start"><span class="level-item">JAVaScript</span></span><span class="level-end"><span class="level-item tag">6</span></span></a><ul><li><a class="level is-mobile" href="/categories/JAVaScript/Asynchronous/"><span class="level-start"><span class="level-item">Asynchronous</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/JAVaScript/Event/"><span class="level-start"><span class="level-item">Event</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/JAVaScript/React/"><span class="level-start"><span class="level-item">React</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/JP/"><span class="level-start"><span class="level-item">JP</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/Others/"><span class="level-start"><span class="level-item">Others</span></span><span class="level-end"><span class="level-item tag">13</span></span></a><ul><li><a class="level is-mobile" href="/categories/Others/Cong-cu-lap-trinh/"><span class="level-start"><span class="level-item">Công cụ lập trình</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Others/PHPCS/"><span class="level-start"><span class="level-item">PHPCS</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Others/Suu-tam/"><span class="level-start"><span class="level-item">Sưu tầm</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Others/Website-Optimization/"><span class="level-start"><span class="level-item">Website Optimization</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/"><span class="level-start"><span class="level-item">The Art of Readable Code</span></span><span class="level-end"><span class="level-item tag">19</span></span></a><ul><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Chapter-1-Code-Should-Be-Easy-to-Understand/"><span class="level-start"><span class="level-item">Chapter 1 - Code Should Be Easy to Understand</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Part-I-Surface-Level-Improvements/"><span class="level-start"><span class="level-item">Part I - Surface-Level Improvements</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Part-II-Simplifying-Loops-and-Logic/"><span class="level-start"><span class="level-item">Part II - Simplifying Loops and Logic</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Part-III-Reorganizing-Your-Code/"><span class="level-start"><span class="level-item">Part III - Reorganizing Your Code</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/The-Art-of-Readable-Code/Part-IV-Selected-Topics/"><span class="level-start"><span class="level-item">Part IV - Selected Topics</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Unit-Test/"><span class="level-start"><span class="level-item">Unit Test</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/special-day/"><span class="level-start"><span class="level-item">special day</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">June 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/05/"><span class="level-start"><span class="level-item">May 2021</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/04/"><span class="level-start"><span class="level-item">April 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/02/"><span class="level-start"><span class="level-item">February 2021</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/01/"><span class="level-start"><span class="level-item">January 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/06/"><span class="level-start"><span class="level-item">June 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">May 2020</span></span><span class="level-end"><span class="level-item tag">23</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/04/"><span class="level-start"><span class="level-item">April 2020</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/02/"><span class="level-start"><span class="level-item">February 2020</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/01/"><span class="level-start"><span class="level-item">January 2020</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/12/"><span class="level-start"><span class="level-item">December 2019</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/11/"><span class="level-start"><span class="level-item">November 2019</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/09/"><span class="level-start"><span class="level-item">September 2019</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/07/"><span class="level-start"><span class="level-item">July 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/04/"><span class="level-start"><span class="level-item">April 2019</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/API/"><span class="tag">API</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CI-CD/"><span class="tag">CI/CD</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Kanji/"><span class="tag">Kanji</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux-command-line/"><span class="tag">Linux command line</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/apache2/"><span class="tag">apache2</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/async-programing/"><span class="tag">async programing</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/authentication/"><span class="tag">authentication</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clean-comment/"><span class="tag">clean comment</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clean-error/"><span class="tag">clean error</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clean-function/"><span class="tag">clean function</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/collection/"><span class="tag">collection</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/configuration/"><span class="tag">configuration</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-command/"><span class="tag">docker command</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-compose-file-format/"><span class="tag">docker compose file format</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-best-practice/"><span class="tag">docker-best-practice</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-compose-yml/"><span class="tag">docker-compose.yml</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-instructions-docker-best-practice/"><span class="tag">docker-instructions docker-best-practice</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-network/"><span class="tag">docker-network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-volume/"><span class="tag">docker-volume</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/event/"><span class="tag">event</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/event-notification/"><span class="tag">event notification</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/excelfile/"><span class="tag">excelfile</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gcp/"><span class="tag">gcp</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/groupby-mysql/"><span class="tag">groupby, mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/jquery-validation/"><span class="tag">jquery-validation</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/kubernetes/"><span class="tag">kubernetes</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongoDB/"><span class="tag">mongoDB</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/naming/"><span class="tag">naming</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/phpcs/"><span class="tag">phpcs</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/phpcs-phpcsfixer/"><span class="tag">phpcs phpcsfixer</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/process-management/"><span class="tag">process management</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/react-boilerplate/"><span class="tag">react boilerplate</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/regex/"><span class="tag">regex</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/requests/"><span class="tag">requests</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stripe/"><span class="tag">stripe</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sudo-command/"><span class="tag">sudo command</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tips-laravel/"><span class="tag">tips laravel</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tracking-php-script/"><span class="tag">tracking php script</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/unit-test/"><span class="tag">unit test</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/validation/"><span class="tag">validation</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vba/"><span class="tag">vba</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vim/"><span class="tag">vim</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://octodex.github.com/images/spidertocat.png" alt="Minh NV"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Minh NV</p><p class="is-size-6 is-block">_N.V.M_</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Hanoi city, Vietnam</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">113</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">33</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">44</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/minhnv2306" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/minhnv2306"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/profile.php?id=100003860456359"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="http://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="http://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><ul class="menu-list"><li><a class="level is-mobile" href="#S3-dung-de-lam-gi"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">S3 dùng để làm gì</span></span></a></li><li><a class="level is-mobile" href="#S3-Use-cases"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">S3 Use cases</span></span></a></li><li><a class="level is-mobile" href="#Amazon-S3-Overview-Buckets"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">Amazon S3 Overview - Buckets</span></span></a></li><li><a class="level is-mobile" href="#Amazon-S3-Overview-Objects"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">Amazon S3 Overview - Objects</span></span></a></li><li><a class="level is-mobile" href="#Lab-01-S3-Hands-On"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">Lab 01: S3 Hands On</span></span></a></li></ul><li><a class="level is-mobile" href="#S3-Security-Bucket-Policy"><span class="level-left"><span class="level-item">2</span><span class="level-item">S3 Security: Bucket Policy</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#S3-Bucket-Policies"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">S3 Bucket Policies</span></span></a></li><li><a class="level is-mobile" href="#S3-Object-Lock-amp-Glacier-Vault-Lock"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">S3 Object Lock &amp; Glacier Vault Lock</span></span></a></li><li><a class="level is-mobile" href="#Lab-02-S3-Security-Bucket-Policy-Hands-On"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">Lab 02: S3 Security: Bucket Policy Hands On</span></span></a></li></ul></li><li><a class="level is-mobile" href="#S3-Websites"><span class="level-left"><span class="level-item">3</span><span class="level-item">S3 Websites</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Lab-03-S3-Websites-Hands-on"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Lab 03: S3 Websites Hands on</span></span></a></li></ul></li><li><a class="level is-mobile" href="#S3-Versioning"><span class="level-left"><span class="level-item">4</span><span class="level-item">S3 Versioning</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Lab-04-Versioning-hands-On"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">Lab 04: Versioning hands On</span></span></a></li></ul></li><li><a class="level is-mobile" href="#S3-Server-Access-Logging"><span class="level-left"><span class="level-item">5</span><span class="level-item">S3 Server Access Logging</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Lab-05-S3-Server-Access-Logging-Hands-On"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">Lab 05: S3 Server Access Logging Hands On</span></span></a></li></ul></li><li><a class="level is-mobile" href="#S3-Replication-Overview-CRR-amp-SRR"><span class="level-left"><span class="level-item">6</span><span class="level-item">S3 Replication Overview (CRR &amp; SRR)</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Lan-06-S3-Replication-Hands-On"><span class="level-left"><span class="level-item">6.1</span><span class="level-item">Lan 06:  S3 Replication Hands On</span></span></a></li></ul></li><li><a class="level is-mobile" href="#S3-Durability-and-Availability"><span class="level-left"><span class="level-item">7</span><span class="level-item">S3 Durability and Availability</span></span></a></li><li><a class="level is-mobile" href="#S3-Storage-Classes-Overview"><span class="level-left"><span class="level-item">8</span><span class="level-item">S3 Storage Classes Overview</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#S3-Standard-–-General-Purposes"><span class="level-left"><span class="level-item">8.1</span><span class="level-item">S3 Standard – General Purposes</span></span></a></li><li><a class="level is-mobile" href="#S3-Standard-–-Infrequent-Access-IA"><span class="level-left"><span class="level-item">8.2</span><span class="level-item">S3 Standard – Infrequent Access (IA)</span></span></a></li><li><a class="level is-mobile" href="#S3-Intelligent-Tiering"><span class="level-left"><span class="level-item">8.3</span><span class="level-item">S3 Intelligent-Tiering</span></span></a></li><li><a class="level is-mobile" href="#S3-One-Zone-Infrequent-Access-IA"><span class="level-left"><span class="level-item">8.4</span><span class="level-item">S3 One Zone - Infrequent Access (IA)</span></span></a></li><li><a class="level is-mobile" href="#Amazon-Glacier-amp-Glacier-Deep-Archive"><span class="level-left"><span class="level-item">8.5</span><span class="level-item">Amazon Glacier &amp; Glacier Deep Archive</span></span></a></li><li><a class="level is-mobile" href="#S3-–-Moving-between-storage-classes"><span class="level-left"><span class="level-item">8.6</span><span class="level-item">S3 – Moving between storage classes</span></span></a></li><li><a class="level is-mobile" href="#Lab-07-S3-Storage-Classes-Hands-On"><span class="level-left"><span class="level-item">8.7</span><span class="level-item">Lab 07: S3 Storage Classes Hands On</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Shared-Responsibility-Model-for-S3"><span class="level-left"><span class="level-item">9</span><span class="level-item">Shared Responsibility Model for S3</span></span></a></li><li><a class="level is-mobile" href="#AWS-Snow-Family-Overview"><span class="level-left"><span class="level-item">10</span><span class="level-item">AWS Snow Family Overview</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Why-Data-Migration-with-AWS-Snow-Family"><span class="level-left"><span class="level-item">10.1</span><span class="level-item">Why Data Migration with AWS Snow Family</span></span></a></li><li><a class="level is-mobile" href="#Diagrams"><span class="level-left"><span class="level-item">10.2</span><span class="level-item">Diagrams</span></span></a></li><li><a class="level is-mobile" href="#Lab-08-AWS-Snow-Family-Hands-On"><span class="level-left"><span class="level-item">10.3</span><span class="level-item">Lab 08 - AWS Snow Family Hands On</span></span></a></li><li><a class="level is-mobile" href="#AWS-OpsHub"><span class="level-left"><span class="level-item">10.4</span><span class="level-item">AWS OpsHub</span></span></a></li><li><a class="level is-mobile" href="#Hybrid-Cloud-for-Storage"><span class="level-left"><span class="level-item">10.5</span><span class="level-item">Hybrid Cloud for Storage</span></span></a></li><li><a class="level is-mobile" href="#AWS-Storage-Gateway"><span class="level-left"><span class="level-item">10.6</span><span class="level-item">AWS Storage Gateway</span></span></a></li></ul></li><li><a class="level is-mobile" href="#S3-Summary"><span class="level-left"><span class="level-item">11</span><span class="level-item">S3 Summary</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://blog.zhangruipeng.me/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Icarus blog</span></span><span class="level-right"><span class="level-item tag">blog.zhangruipeng.me</span></span></a></li><li><a class="level is-mobile" href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Icarus github</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="https://cdn2.f-cdn.com/contestentries/1423711/31029843/5baf0998cc763_thumb900.jpg" alt="Hello, I am Minh" height="28"></a><p class="is-size-7"><span>&copy; 2021 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">Visited by <span id="busuanzi_value_site_uv">0</span> users</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
