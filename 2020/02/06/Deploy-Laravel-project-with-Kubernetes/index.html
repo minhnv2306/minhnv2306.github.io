@@ -7,7 +7,7 @@
 <p>Nói một cách dễ hiểu, nếu bạn biết dùng Docker hoặc rkt [0] để chạy các container, thì K8s là giải pháp để quản lý chúng (quản lý bao gồm: tạo, sửa, xoá, xếp lịch(schedule), hay mở rộng (scale)…) trên nhiều máy. Như vậy, để có thể sử dụng được K8s, bạn <strong>phải biết dùng Docker.</strong></p>
 <p>Tham khảo thêm tạo Blog: <a target="_blank" rel="noopener" href="https://www.familug.org/2017/03/kubernetes.html">https://www.familug.org/2017/03/kubernetes.html</a></p>
 <p>Vì đây là một chủ đề quá rộng và chưa có kinh nghiệm áp dụng, tác giả xin dừng lại ở mức giới thiệu, cưỡi tên lửa xem hoa.</p>
-<p>Github projects: <a target="_blank" rel="noopener" href="https://github.com/minhnv2306/laravel_6_learn_deploy">https://github.com/minhnv2306/laravel_6_learn_deploy</a><br><a id="more"></a></p>
+<p>Github projects: <a target="_blank" rel="noopener" href="https://github.com/minhnv2306/laravel_6_learn_deploy">https://github.com/minhnv2306/laravel_6_learn_deploy</a><br><span id="more"></span></p>
 <h1 id="Buoc-0-Test-docker-o-local"><a href="#Buoc-0-Test-docker-o-local" class="headerlink" title="Bước 0: Test docker ở local"></a>Bước 0: Test docker ở local</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t my-laravel-image .</span><br><span class="line">docker run -p 8000:8000 my-laravel-image</span><br></pre></td></tr></table></figure>
 <p>Sau đó kiểm tra qua đường dẫn <code>http://localhost:8000/login</code> xem ứng dụng lên chưa nhé :D</p>
 <p>Nếu docker đã chạy ngon ở local, bước tiếp theo là để nó được deploy lên <strong>Kubernetes</strong> thôi.</p>
@@ -17,9 +17,9 @@
 <ol>
 <li>Inspect the running Pods by using kubectl get pods:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pods</span><br></pre></td></tr></table></figure></li>
 <li>Xem thông tin service deploy<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get service hello-laravel</span><br></pre></td></tr></table></figure>
-<h1 id="Goc-nhin-it-oi-cua-tac-gia-ve-Kubernetes"><a href="#Goc-nhin-it-oi-cua-tac-gia-ve-Kubernetes" class="headerlink" title="Góc nhìn ít ỏi của tác giả về Kubernetes"></a>Góc nhìn ít ỏi của tác giả về Kubernetes</h1></li>
+</li>
 </ol>
-<ul>
+<h1 id="Goc-nhin-it-oi-cua-tac-gia-ve-Kubernetes"><a href="#Goc-nhin-it-oi-cua-tac-gia-ve-Kubernetes" class="headerlink" title="Góc nhìn ít ỏi của tác giả về Kubernetes"></a>Góc nhìn ít ỏi của tác giả về Kubernetes</h1><ul>
 <li>Kubernetes ưu điểm trong việc tối ưu hệ thống, cân bằng tải, nên được sử dụng trong các hệ thống lớn, tải cao. Khi đó việc phân tải đa phần mình sẽ nhờ Google làm giúp.</li>
 <li>Chính vì vậy khi deploy với Kubernetes, nó sẽ tạo cho bạn 3 instance VM (xem trong instance group sẽ thấy rõ) để cùng chạy web của bạn</li>
 <li>Thực tế tác giả chưa làm về web tải lớn, khi nào có kinh nghiệm sẽ đọc tiếp, giờ xem qua thôi :D</li>
